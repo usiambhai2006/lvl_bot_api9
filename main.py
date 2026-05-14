@@ -558,27 +558,25 @@ async def StarTinG():
             traceback.print_exc()
             await asyncio.sleep(5)
 
-
 def run_flask():
     import socket
+    import os
 
     try:
         local_ip = socket.gethostbyname(socket.gethostname())
     except:
         local_ip = "127.0.0.1"
 
+    port = int(os.environ.get("PORT", 5000))
+
     print("\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     print("🤖 LEVEL UP API STARTED")
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     print(f"🌐 Local IP     : {local_ip}")
-    print("🚪 Port         : 5000")
+    print(f"🚪 Port         : {port}")
     print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    print(f"✅ START API    : http://{local_ip}:5000/start/TEAM_CODE")
-    print(f"🛑 STOP API     : http://{local_ip}:5000/stop")
-    print("━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n")
 
-    app.run(host="0.0.0.0", port=5000)
-
+    app.run(host="0.0.0.0", port=port)
 
 if __name__ == '__main__':
     print("🚀 Starting bot...")
